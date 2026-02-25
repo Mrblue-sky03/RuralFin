@@ -75,6 +75,7 @@
                         </exclude>
                     </excludes>
                 </configuration>
+
             </plugin>
 
             <!-- JavaFX plugin -->
@@ -85,6 +86,22 @@
                 <configuration>
                     <mainClass>com.finanzas.MainApp</mainClass>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.finanzas.MainApp</mainClass>
+                    <layout>JAR</layout>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
