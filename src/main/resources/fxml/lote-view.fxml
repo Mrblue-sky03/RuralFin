@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.finanzas.view.LoteController">
+    <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+
+    <HBox spacing="10">
+        <Button text="← Volver" onAction="#volverCategoria"/>
+        <Label fx:id="lblTitulo" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+    </HBox>
+
+    <Separator/>
+
+    <!-- SECCIÓN POBLACIÓN -->
+    <TitledPane text="Población" collapsible="false">
+        <VBox spacing="8">
+            <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label fx:id="lblPoblacionInicial" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtPoblacionInicial" promptText="Población inicial" prefWidth="150"/>
+                <Button fx:id="btnGuardarPoblacion" text="Guardar población" onAction="#guardarPoblacionInicial"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <TextField fx:id="txtEnfermos" promptText="Enfermos" prefWidth="100"/>
+                <TextField fx:id="txtHeridos" promptText="Heridos" prefWidth="100"/>
+                <TextField fx:id="txtMuertos" promptText="Muertos" prefWidth="100"/>
+                <DatePicker fx:id="dpFechaRegistro" promptText="Fecha (opcional)" prefWidth="160"/>
+                <Button text="Agregar registro" onAction="#guardarRegistroPoblacion"/>
+                <Button text="Eliminar registro" onAction="#eliminarRegistroPoblacion"/>
+            </HBox>
+
+            <TableView fx:id="tablaRegistros" prefHeight="120">
+                <columns>
+                    <TableColumn fx:id="colRegFecha" text="Fecha" prefWidth="120"/>
+                    <TableColumn fx:id="colRegEnfermos" text="Enfermos" prefWidth="100"/>
+                    <TableColumn fx:id="colRegHeridos" text="Heridos" prefWidth="100"/>
+                    <TableColumn fx:id="colRegMuertos" text="Muertos" prefWidth="100"/>
+                </columns>
+            </TableView>
+
+            <HBox spacing="30">
+                <Label fx:id="lblTotalMuertos" style="-fx-text-fill: red; -fx-font-weight: bold;"/>
+                <Label fx:id="lblPoblacionFinal" style="-fx-text-fill: #333; -fx-font-weight: bold;"/>
+            </HBox>
+        </VBox>
+    </TitledPane>
+
+    <Separator/>
+
+    <!-- SECCIÓN MOVIMIENTOS -->
+    <TitledPane text="Movimientos Financieros" collapsible="false">
+        <VBox spacing="8">
+            <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+
+            <GridPane hgap="10" vgap="8">
+                <Label text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="txtNombre" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="180"/>
+
+                <Label text="Tipo:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <ComboBox fx:id="cmbTipo" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="180"/>
+
+                <Label text="Monto:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <TextField fx:id="txtMonto" GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="180"/>
+
+                <Label text="Fecha (opcional):" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <DatePicker fx:id="dpFecha" GridPane.columnIndex="1" GridPane.rowIndex="3" prefWidth="180"/>
+
+                <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                    <Button text="Guardar" onAction="#guardarMovimiento"/>
+                    <Button text="Eliminar seleccionado" onAction="#eliminarMovimiento"/>
+                </HBox>
+            </GridPane>
+
+            <TableView fx:id="tablaMovimientos" prefHeight="150" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colFecha" text="Fecha" prefWidth="120"/>
+                    <TableColumn fx:id="colNombre" text="Nombre" prefWidth="180"/>
+                    <TableColumn fx:id="colTipo" text="Tipo" prefWidth="90"/>
+                    <TableColumn fx:id="colMonto" text="Monto" prefWidth="130"/>
+                </columns>
+            </TableView>
+
+            <HBox spacing="30" style="-fx-padding: 8; -fx-background-color: #f4f4f4;">
+                <VBox>
+                    <Label text="Total Ingresos" style="-fx-font-weight: bold;"/>
+                    <Label fx:id="lblIngresos" style="-fx-text-fill: green; -fx-font-size: 13;"/>
+                </VBox>
+                <VBox>
+                    <Label text="Total Gastos" style="-fx-font-weight: bold;"/>
+                    <Label fx:id="lblGastos" style="-fx-text-fill: red; -fx-font-size: 13;"/>
+                </VBox>
+                <VBox>
+                    <Label text="Balance" style="-fx-font-weight: bold;"/>
+                    <Label fx:id="lblBalance" style="-fx-font-size: 13;"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </TitledPane>
+
+</VBox>

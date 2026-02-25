@@ -1,0 +1,17 @@
+# Compilados
+target/
+
+# IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Configuración local sensible
+src/main/resources/application.properties
+src/main/resources/application-windows.properties
+src/main/resources/application-mac.properties
+
+# Sistema operativo
+.DS_Store
+Thumbs.db

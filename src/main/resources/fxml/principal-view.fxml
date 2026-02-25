@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="15" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.finanzas.view.PrincipalController">
+    <padding><Insets top="30" right="30" bottom="30" left="30"/></padding>
+
+    <Label text="🌿 Bienvenido al Sistema de Finanzas de la Granja"
+           style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+
+    <Separator/>
+
+    <Label text="Categorías" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10">
+        <TextField fx:id="txtNombreCategoria" promptText="Nombre de la categoría" prefWidth="250"/>
+        <Button text="Agregar" onAction="#agregarCategoria"/>
+    </HBox>
+
+    <ListView fx:id="listaCategorias" VBox.vgrow="ALWAYS" prefHeight="350"/>
+
+    <HBox spacing="10">
+        <Button text="Abrir categoría" onAction="#abrirCategoria"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+        <Button text="Eliminar categoría" onAction="#eliminarCategoria"
+                style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+    </HBox>
+</VBox>

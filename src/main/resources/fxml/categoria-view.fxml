@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="15" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.finanzas.view.CategoriaController">
+    <padding><Insets top="30" right="30" bottom="30" left="30"/></padding>
+
+    <HBox spacing="10">
+        <Button text="← Volver" onAction="#volverPrincipal"/>
+        <Label fx:id="lblTitulo" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+    </HBox>
+
+    <Separator/>
+
+    <Label text="Lotes" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10">
+        <TextField fx:id="txtNombreLote" promptText="Nombre del lote" prefWidth="200"/>
+        <DatePicker fx:id="dpFechaLote" promptText="Fecha (opcional)" prefWidth="160"/>
+        <Button text="Agregar lote" onAction="#agregarLote"/>
+    </HBox>
+
+    <ListView fx:id="listaLotes" VBox.vgrow="ALWAYS" prefHeight="350"/>
+
+    <HBox spacing="10">
+        <Button text="Abrir lote" onAction="#abrirLote"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+        <Button text="Eliminar lote" onAction="#eliminarLote"
+                style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+    </HBox>
+</VBox>
