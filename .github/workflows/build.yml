@@ -17,6 +17,10 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
+      - name: Get version
+        id: version
+        run: echo "VERSION=$('${{ github.ref_name }}'.Substring(1))" >> $env:GITHUB_OUTPUT
+
       - name: Create application.properties
         run: |
           echo "spring.datasource.url=jdbc:sqlserver://localhost:1433;databaseName=finanzas;trustServerCertificate=true;encrypt=false" > src/main/resources/application.properties
@@ -37,7 +41,7 @@ jobs:
             --main-jar finanzas-1.0-SNAPSHOT.jar `
             --main-class org.springframework.boot.loader.launch.JarLauncher `
             --name RuralFin `
-            --app-version ${{ github.ref_name }} `
+            --app-version ${{ steps.version.outputs.VERSION }} `
             --type exe `
             --win-shortcut `
             --win-menu `
@@ -59,6 +63,10 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
+
+      - name: Get version
+        id: version
+        run: echo "VERSION=${GITHUB_REF_NAME#v}" >> $GITHUB_OUTPUT
 
       - name: Create application.properties
         run: |
@@ -82,7 +90,7 @@ jobs:
             --main-jar finanzas-1.0-SNAPSHOT.jar \
             --main-class org.springframework.boot.loader.launch.JarLauncher \
             --name RuralFin \
-            --app-version ${{ github.ref_name }} \
+            --app-version ${{ steps.version.outputs.VERSION }} \
             --type dmg \
             --dest installer-mac
 
@@ -95,6 +103,8 @@ jobs:
   release:
     needs: [build-windows, build-mac]
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Download Windows installer
         uses: actions/download-artifact@v4
